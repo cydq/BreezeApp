@@ -7,18 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C4187CA928710DC5003B0820 /* Expression.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4187CA828710DC5003B0820 /* Expression.swift */; };
 		C4941B9E286FA05400D618D6 /* BreezeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4941B9D286FA05400D618D6 /* BreezeApp.swift */; };
 		C4941BA0286FA05400D618D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4941B9F286FA05400D618D6 /* ContentView.swift */; };
 		C4941BA2286FA05500D618D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4941BA1286FA05500D618D6 /* Assets.xcassets */; };
 		C4941BA5286FA05500D618D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4941BA4286FA05500D618D6 /* Preview Assets.xcassets */; };
+		C4941BB3286FA67A00D618D6 /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = C4941BB2286FA67A00D618D6 /* RealModule */; };
+		C4941BB6286FA6CD00D618D6 /* Input.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4941BB5286FA6CD00D618D6 /* Input.swift */; };
+		C4941BB8286FA73B00D618D6 /* InputToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4941BB7286FA73B00D618D6 /* InputToken.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C4187CA828710DC5003B0820 /* Expression.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Expression.swift; sourceTree = "<group>"; };
 		C4941B9A286FA05400D618D6 /* Breeze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breeze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4941B9D286FA05400D618D6 /* BreezeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeApp.swift; sourceTree = "<group>"; };
 		C4941B9F286FA05400D618D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C4941BA1286FA05500D618D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C4941BA4286FA05500D618D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C4941BB5286FA6CD00D618D6 /* Input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Input.swift; sourceTree = "<group>"; };
+		C4941BB7286FA73B00D618D6 /* InputToken.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputToken.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,16 +33,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4941BB3286FA67A00D618D6 /* RealModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C4187CA728710D8C003B0820 /* Expression */ = {
+			isa = PBXGroup;
+			children = (
+				C4187CA828710DC5003B0820 /* Expression.swift */,
+			);
+			path = Expression;
+			sourceTree = "<group>";
+		};
 		C4941B91286FA05400D618D6 = {
 			isa = PBXGroup;
 			children = (
 				C4941B9C286FA05400D618D6 /* Breeze */,
+				C4941BAE286FA35300D618D6 /* Breeze Engine */,
 				C4941B9B286FA05400D618D6 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,9 +68,11 @@
 		C4941B9C286FA05400D618D6 /* Breeze */ = {
 			isa = PBXGroup;
 			children = (
-				C4941B9D286FA05400D618D6 /* BreezeApp.swift */,
-				C4941B9F286FA05400D618D6 /* ContentView.swift */,
-				C4941BA1286FA05500D618D6 /* Assets.xcassets */,
+				C4941BAB286FA33B00D618D6 /* Application */,
+				C4941BAD286FA34C00D618D6 /* Controllers */,
+				C4941BB0286FA57000D618D6 /* Components */,
+				C4941BAC286FA34800D618D6 /* Views */,
+				C4941BAF286FA37300D618D6 /* Resources */,
 				C4941BA3286FA05500D618D6 /* Preview Content */,
 			);
 			path = Breeze;
@@ -65,6 +84,62 @@
 				C4941BA4286FA05500D618D6 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		C4941BAB286FA33B00D618D6 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				C4941B9D286FA05400D618D6 /* BreezeApp.swift */,
+			);
+			name = Application;
+			sourceTree = "<group>";
+		};
+		C4941BAC286FA34800D618D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				C4941B9F286FA05400D618D6 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		C4941BAD286FA34C00D618D6 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		C4941BAE286FA35300D618D6 /* Breeze Engine */ = {
+			isa = PBXGroup;
+			children = (
+				C4187CA728710D8C003B0820 /* Expression */,
+				C4941BB4286FA69400D618D6 /* Input */,
+			);
+			path = "Breeze Engine";
+			sourceTree = "<group>";
+		};
+		C4941BAF286FA37300D618D6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				C4941BA1286FA05500D618D6 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		C4941BB0286FA57000D618D6 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		C4941BB4286FA69400D618D6 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				C4941BB5286FA6CD00D618D6 /* Input.swift */,
+				C4941BB7286FA73B00D618D6 /* InputToken.swift */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +158,9 @@
 			dependencies = (
 			);
 			name = Breeze;
+			packageProductDependencies = (
+				C4941BB2286FA67A00D618D6 /* RealModule */,
+			);
 			productName = Breeze;
 			productReference = C4941B9A286FA05400D618D6 /* Breeze.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +189,9 @@
 				Base,
 			);
 			mainGroup = C4941B91286FA05400D618D6;
+			packageReferences = (
+				C4941BB1286FA67A00D618D6 /* XCRemoteSwiftPackageReference "swift-numerics" */,
+			);
 			productRefGroup = C4941B9B286FA05400D618D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -137,8 +218,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4941BB8286FA73B00D618D6 /* InputToken.swift in Sources */,
+				C4941BB6286FA6CD00D618D6 /* Input.swift in Sources */,
 				C4941BA0286FA05400D618D6 /* ContentView.swift in Sources */,
 				C4941B9E286FA05400D618D6 /* BreezeApp.swift in Sources */,
+				C4187CA928710DC5003B0820 /* Expression.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,12 +363,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jzshao.Breeze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -308,12 +392,12 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jzshao.Breeze;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -339,6 +423,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C4941BB1286FA67A00D618D6 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-numerics.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C4941BB2286FA67A00D618D6 /* RealModule */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4941BB1286FA67A00D618D6 /* XCRemoteSwiftPackageReference "swift-numerics" */;
+			productName = RealModule;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C4941B92286FA05400D618D6 /* Project object */;
 }
