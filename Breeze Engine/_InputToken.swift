@@ -7,13 +7,13 @@
 
 import Foundation
 
-enum InputToken {
+enum _InputToken {
     // 0-9
     case digit(Int)
     
     // Used for expression parsing
     case _literal(Double, decimal: Int)
-    case _expression(Expression)
+    case _expression(_Expression)
     
     // Constants
     case constant(Constant)

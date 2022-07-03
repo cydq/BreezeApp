@@ -8,11 +8,11 @@
 import Foundation
 import RealModule
 
-indirect enum Expression {
+indirect enum _Expression {
     case value(Double)
-    case expression(Operation, [Expression])
+    case expression(Operation, [_Expression])
     
-    private func evaluateExpression(op: Operation, params: [Expression]) -> Double {
+    private func evaluateExpression(op: Operation, params: [_Expression]) -> Double {
         return 1
     }
     

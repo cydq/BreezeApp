@@ -7,18 +7,18 @@
 
 import Foundation
 
-struct Input {
-    var tokens: [InputToken] = []
+struct _Input {
+    var tokens: [_InputToken] = []
     
-    mutating func push(_ token: InputToken) {
+    mutating func push(_ token: _InputToken) {
         tokens.append(token)
     }
     
-    mutating func pop() -> InputToken? {
+    mutating func pop() -> _InputToken? {
         return tokens.popLast()
     }
     
-    func toExpression() -> Expression? {
+    func toExpression() -> _Expression? {
         guard let literalInput = toLiteralInput() else {
             return nil
         }
@@ -26,13 +26,13 @@ struct Input {
         return toExpression(literalInput)
     }
     
-    private func toExpression(_ tokens: [InputToken]) -> Expression? {
+    private func toExpression(_ tokens: [_InputToken]) -> _Expression? {
         if tokens.isEmpty {
             return nil // What the hell?
         }
         
         // Recurse parentheses and functions
-        var flat: [InputToken] = []
+        var flat: [_InputToken] = []
         var i = tokens.startIndex
         while i < tokens.endIndex {
             let token = tokens[i]
@@ -48,8 +48,8 @@ struct Input {
             }
             
             if case let .operation(op) = token, case .function(_) = op {
-                let skipped: [[InputToken]] = skip(&i, tokens: tokens)
-                var expressions: [Expression]
+                let skipped: [[_InputToken]] = skip(&i, tokens: tokens)
+                var expressions: [_Expression]
                 
                 do {
                     try expressions = skipped.map { t in
@@ -64,7 +64,7 @@ struct Input {
                     return nil
                 }
                 
-                flat.append(._expression(Expression.expression(op, expressions)))
+                flat.append(._expression(_Expression.expression(op, expressions)))
                 continue
             }
             
@@ -72,8 +72,8 @@ struct Input {
         }
         
         // + -
-        var l1: [Expression] = []
-        var current: [InputToken] = []
+        var l1: [_Expression] = []
+        var current: [_InputToken] = []
         
         for token in tokens {
             if case let .operation(o) = token, case let .infix(op) = o {
@@ -107,7 +107,7 @@ struct Input {
         
         // * /
         
-        var l2: [Expression] = []
+        var l2: [_Expression] = []
         current = []
         
         for token in tokens {
@@ -142,7 +142,7 @@ struct Input {
         
         // ^
         
-        var l3: [Expression] = []
+        var l3: [_Expression] = []
         current = []
         
         for token in tokens {
@@ -167,6 +167,27 @@ struct Input {
         
         // Prefix
         
+        var l4: [_Expression] = []
+        current = []
+        
+        for token in tokens {
+            if case let .operation(op) = token, case .prefix = op {
+                guard let expr = toExpression(current) else {
+                    return nil
+                }
+                
+                l4.append(expr)
+                current = []
+                continue
+            }
+            
+            current.append(token)
+        }
+        
+        if (!l4.isEmpty) {
+            return .expression(.infix(.exp), l3)
+        }
+        
         // Postifx
         
         // EE
@@ -174,8 +195,8 @@ struct Input {
         return nil
     }
     
-    private func skip(_ i: inout Int, tokens: [InputToken]) -> [InputToken] {
-        var sub: [InputToken] = []
+    private func skip(_ i: inout Int, tokens: [_InputToken]) -> [_InputToken] {
+        var sub: [_InputToken] = []
         var depth = 1
         
         while depth > 1 && i < tokens.endIndex {
@@ -204,9 +225,9 @@ struct Input {
         return sub
     }
     
-    private func skip(_ i: inout Int, tokens: [InputToken]) -> [[InputToken]] {
-        var subs: [[InputToken]] = []
-        var sub: [InputToken] = []
+    private func skip(_ i: inout Int, tokens: [_InputToken]) -> [[_InputToken]] {
+        var subs: [[_InputToken]] = []
+        var sub: [_InputToken] = []
         var depth = 1
         
         while depth > 1 && i < tokens.endIndex {
@@ -238,8 +259,8 @@ struct Input {
         return subs
     }
     
-    func toLiteralInput() -> [InputToken]? {
-        var newTokens: [InputToken] = []
+    func toLiteralInput() -> [_InputToken]? {
+        var newTokens: [_InputToken] = []
         
         for token in tokens {
             // Handle decimal point
@@ -274,7 +295,7 @@ struct Input {
             newTokens.append(._literal(literal + Double(digit) * pow(10, -1 * Double(decimal)), decimal: decimal + 1))
         }
         
-        var newTokens2: [InputToken] = []
+        var newTokens2: [_InputToken] = []
         
         for token in newTokens {
             if case let .constant(c) = token {
