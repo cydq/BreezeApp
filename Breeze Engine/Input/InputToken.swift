@@ -12,7 +12,8 @@ enum InputToken {
     case digit(Int)
     
     // Used for expression parsing
-    case literal(Double, decimal: Int)
+    case _literal(Double, decimal: Int)
+    case _expression(Expression)
     
     // Constants
     case constant(Constant)
