@@ -8,9 +8,18 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var expr: String = ""
+    @State private var result: String = ":p"
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            TextField("Expression", text: $expr.onChange { _ in
+                result = evaluate(expr: expr)
+            })
+                .padding()
+        
+            Text("= " + (result))
+        }
     }
 }
 
