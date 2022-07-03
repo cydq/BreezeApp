@@ -40,14 +40,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C4187CA728710D8C003B0820 /* Expression */ = {
-			isa = PBXGroup;
-			children = (
-				C4187CA828710DC5003B0820 /* Expression.swift */,
-			);
-			path = Expression;
-			sourceTree = "<group>";
-		};
 		C4941B91286FA05400D618D6 = {
 			isa = PBXGroup;
 			children = (
@@ -112,8 +104,9 @@
 		C4941BAE286FA35300D618D6 /* Breeze Engine */ = {
 			isa = PBXGroup;
 			children = (
-				C4187CA728710D8C003B0820 /* Expression */,
-				C4941BB4286FA69400D618D6 /* Input */,
+				C4187CA828710DC5003B0820 /* Expression.swift */,
+				C4941BB5286FA6CD00D618D6 /* Input.swift */,
+				C4941BB7286FA73B00D618D6 /* InputToken.swift */,
 			);
 			path = "Breeze Engine";
 			sourceTree = "<group>";
@@ -131,15 +124,6 @@
 			children = (
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		C4941BB4286FA69400D618D6 /* Input */ = {
-			isa = PBXGroup;
-			children = (
-				C4941BB5286FA6CD00D618D6 /* Input.swift */,
-				C4941BB7286FA73B00D618D6 /* InputToken.swift */,
-			);
-			path = Input;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
