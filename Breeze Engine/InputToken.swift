@@ -22,6 +22,19 @@ enum InputToken {
         case pi
         case phi
         case tau
+        
+        var value: Double {
+            switch self {
+            case .e:
+                return 2.71828182845904523536028747135266249775724709369995
+            case .pi:
+                return 3.14159265358979323846264338327950288419716939937510
+            case .phi:
+                return 1.6180339887498948482045868343656381177203091798058
+            case .tau:
+                return 6.28318530717958647692528676655900576839433879875021
+            }
+        }
     }
     
     // Operations

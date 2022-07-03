@@ -33,7 +33,6 @@ struct Input {
         
         // Recurse parentheses and functions
         var flat: [InputToken] = []
-        
         var i = tokens.startIndex
         while i < tokens.endIndex {
             let token = tokens[i]
@@ -72,6 +71,15 @@ struct Input {
             flat.append(token)
         }
         
+        // + -
+        
+        // * /
+        
+        // ^
+        
+        // Prefix/Postfix
+        
+        // Constatns
         
         return nil
     }
@@ -144,6 +152,7 @@ struct Input {
         var newTokens: [InputToken] = []
         
         for token in tokens {
+            // Handle decimal point
             if case .dot = token, case let ._literal(literal, decimal: decimal) = newTokens.last {
                 if decimal > 0 {
                     return nil
