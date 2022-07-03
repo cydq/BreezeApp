@@ -41,7 +41,6 @@ enum InputToken {
     case operation(Operation)
     
     // Misc.
-    case negative
     case dot
     case comma
     case openParen
@@ -52,6 +51,7 @@ enum Operation {
     // Operators
     case prefix(Prefix)
     enum Prefix {
+        case negative
         case sqrt
         case cbrt
         case antiln

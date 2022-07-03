@@ -72,14 +72,104 @@ struct Input {
         }
         
         // + -
+        var l1: [Expression] = []
+        var current: [InputToken] = []
+        
+        for token in tokens {
+            if case let .operation(o) = token, case let .infix(op) = o {
+                if case .plus = op {
+                    guard let expr = toExpression(current) else {
+                        return nil
+                    }
+                    
+                    l1.append(expr)
+                    current = []
+                    continue
+                }
+                
+                if case .minus = op {
+                    guard let expr = toExpression(current) else {
+                        return nil
+                    }
+                    
+                    l1.append(.expression(.prefix(.negative), [expr]))
+                    current = []
+                    continue
+                }
+            }
+            
+            current.append(token)
+        }
+        
+        if (!l1.isEmpty) {
+            return .expression(.infix(.plus), l1)
+        }
         
         // * /
         
+        var l2: [Expression] = []
+        current = []
+        
+        for token in tokens {
+            if case let .operation(o) = token, case let .infix(op) = o {
+                if case .times = op {
+                    guard let expr = toExpression(current) else {
+                        return nil
+                    }
+                    
+                    l2.append(expr)
+                    current = []
+                    continue
+                }
+                
+                if case .divide = op {
+                    guard let expr = toExpression(current) else {
+                        return nil
+                    }
+                    
+                    l2.append(.expression(.postfix(.reciprocal), [expr]))
+                    current = []
+                    continue
+                }
+            }
+            
+            current.append(token)
+        }
+        
+        if (!l2.isEmpty) {
+            return .expression(.infix(.times), l2)
+        }
+        
         // ^
         
-        // Prefix/Postfix
+        var l3: [Expression] = []
+        current = []
         
-        // Constatns
+        for token in tokens {
+            if case let .operation(o) = token, case let .infix(op) = o {
+                if case .exp = op {
+                    guard let expr = toExpression(current) else {
+                        return nil
+                    }
+                    
+                    l3.append(expr)
+                    current = []
+                    continue
+                }
+            }
+            
+            current.append(token)
+        }
+        
+        if (!l3.isEmpty) {
+            return .expression(.infix(.exp), l3)
+        }
+        
+        // Prefix
+        
+        // Postifx
+        
+        // EE
         
         return nil
     }
@@ -184,6 +274,17 @@ struct Input {
             newTokens.append(._literal(literal + Double(digit) * pow(10, -1 * Double(decimal)), decimal: decimal + 1))
         }
         
-        return newTokens
+        var newTokens2: [InputToken] = []
+        
+        for token in newTokens {
+            if case let .constant(c) = token {
+                newTokens2.append(._literal(c.value, decimal: -1))
+                continue
+            }
+            
+            newTokens.append(token)
+        }
+        
+        return newTokens2
     }
 }
