@@ -40,9 +40,7 @@ struct Input {
             i += 1
             
             if case .openParen = token {
-                let skipped = skip(&i, tokens: tokens)
-                
-                guard let subExpr = toExpression(skipped) else {
+                guard let subExpr = toExpression(skip(&i, tokens: tokens)) else {
                     return nil
                 }
                 
@@ -50,11 +48,26 @@ struct Input {
                 continue
             }
             
-//            if case let .operation(op) = token, case let .function(fn) = op {
-//                let skipped = skip(&i, tokens: tokens)
-//                flat.append(._expression(Expression.expression(<#T##Operation#>, [Expression])))
-//                continue
-//            }
+            if case let .operation(op) = token, case .function(_) = op {
+                let skipped: [[InputToken]] = skip(&i, tokens: tokens)
+                var expressions: [Expression]
+                
+                do {
+                    try expressions = skipped.map { t in
+                        guard let expression = toExpression(t) else {
+                            struct e: Error {}
+                            throw e()
+                        }
+                        
+                        return expression
+                    }
+                } catch {
+                    return nil
+                }
+                
+                flat.append(._expression(Expression.expression(op, expressions)))
+                continue
+            }
             
             flat.append(token)
         }
@@ -82,6 +95,8 @@ struct Input {
             if case .closeParen = tok {
                 depth -= 1
             }
+            
+            i += 1
         }
         
         if depth == 0 {
@@ -91,7 +106,39 @@ struct Input {
         return sub
     }
     
-//    private func skip
+    private func skip(_ i: inout Int, tokens: [InputToken]) -> [[InputToken]] {
+        var subs: [[InputToken]] = []
+        var sub: [InputToken] = []
+        var depth = 1
+        
+        while depth > 1 && i < tokens.endIndex {
+            let tok = tokens[i]
+            sub.append(tok)
+            
+            if case .openParen = tok {
+                depth += 1
+            }
+            
+            if case let .operation(op) = tok, case .function(_) = op {
+                depth += 1
+            }
+            
+            if case .closeParen = tok {
+                depth -= 1
+            }
+            
+            if depth == 0, case .comma = tok {
+                subs.append(sub)
+                sub = []
+            }
+        }
+        
+        if depth == 0 {
+            let _ = sub.popLast()
+        }
+        
+        return subs
+    }
     
     func toLiteralInput() -> [InputToken]? {
         var newTokens: [InputToken] = []
