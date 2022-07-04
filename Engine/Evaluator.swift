@@ -111,33 +111,41 @@ func expression(expr: String) -> Expression {
             return { a in
                 let low = Int(a[0].rounded(.up))
                 let high = Int(a[1].rounded(.down))
-                let range = low...high
-                return Double(Int.random(in: range))
+                
+                return low > high
+                    ? Double.nan
+                    : Double(Int.random(in: low...high))
             }
         
-        case .function(Token.sum.rawValue, arity: .atLeast(1)):
-            return { a in return a.reduce(0, +) }
-        case .function(Token.product.rawValue, arity: .atLeast(1)):
-            return { a in return a.reduce(0, *) }
-        case .function(Token.count.rawValue, arity: .atLeast(0)):
-            return { a in return Double(a.count) }
+        case .function(Token.sum.rawValue, arity: _):
+            return { a in return a.count < 1 ? Double.nan : a.reduce(0, +) }
+        case .function(Token.product.rawValue, arity: _):
+            return { a in return a.count < 1 ? Double.nan : a.reduce(1, *) }
+        case .function(Token.count.rawValue, arity: _):
+            return { a in return a.count < 1 ? Double.nan : Double(a.count) }
         
-        case .function(Token.min.rawValue, arity: .atLeast(1)):
-            return { a in return a.min() ?? Double.nan }
-        case .function(Token.max.rawValue, arity: .atLeast(1)):
-            return { a in return a.max() ?? Double.nan }
+        case .function(Token.min.rawValue, arity: _):
+            return { a in return a.count < 1 ? Double.nan : a.min() ?? Double.nan }
+        case .function(Token.max.rawValue, arity: _):
+            return { a in return a.count < 1 ? Double.nan : a.max() ?? Double.nan }
             
-        case .function(Token.mean.rawValue, arity: .atLeast(1)):
-            return { a in return a.reduce(0, +) / Double(a.count) }
-        case .function(Token.median.rawValue, arity: .atLeast(1)):
-            return { a in return calculateMedian(array: a) }
-        case .function(Token.mode.rawValue, arity: .atLeast(1)):
+        case .function(Token.mean.rawValue, arity: _):
+            return { a in return a.count < 1 ? Double.nan : a.reduce(0, +) / Double(a.count) }
+        case .function(Token.median.rawValue, arity: _):
+            return { a in return a.count < 1 ? Double.nan : calculateMedian(array: a) }
+        case .function(Token.mode.rawValue, arity: _):
             return { a in
+                if a.count < 1 {
+                    return Double.nan
+                }
                 let set = NSCountedSet(array: a)
                 return set.max { set.count(for: $0) < set.count(for: $1) } as! Double
             }
-        case .function(Token.stddev.rawValue, arity: .atLeast(1)):
+        case .function(Token.stddev.rawValue, arity: _):
             return { a in
+                if a.count < 1 {
+                    return Double.nan
+                }
                 let mean = a.reduce(0, +) / Double(a.count)
                 let v = a.reduce(0, { $0 + ($1-mean)*($1-mean) })
                 return sqrt(v / (Double(a.count) - 1))
