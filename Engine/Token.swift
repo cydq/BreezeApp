@@ -43,4 +43,8 @@ enum Token: String {
     // Misc.
     case dot = ".", comma = ","
     case open = "(", close = ")"
+    
+    var rawValueFn: String {
+        return "\(rawValue)("
+    }
 }

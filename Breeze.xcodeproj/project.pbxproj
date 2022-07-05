@@ -12,11 +12,13 @@
 		C4187CB2287248E0003B0820 /* Evaluator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4187CB1287248E0003B0820 /* Evaluator.swift */; };
 		C4187CB528724934003B0820 /* Expression in Frameworks */ = {isa = PBXBuildFile; productRef = C4187CB428724934003B0820 /* Expression */; };
 		C4187CB828725A21003B0820 /* Binding+onChange.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4187CB728725A21003B0820 /* Binding+onChange.swift */; };
+		C4187CBA2872B568003B0820 /* ButtonPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4187CB92872B568003B0820 /* ButtonPanelView.swift */; };
+		C4187CBC2872B575003B0820 /* DisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4187CBB2872B575003B0820 /* DisplayView.swift */; };
+		C4187CBE2872B5AE003B0820 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4187CBD2872B5AE003B0820 /* ButtonView.swift */; };
 		C4941B9E286FA05400D618D6 /* BreezeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4941B9D286FA05400D618D6 /* BreezeApp.swift */; };
 		C4941BA0286FA05400D618D6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4941B9F286FA05400D618D6 /* ContentView.swift */; };
 		C4941BA2286FA05500D618D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4941BA1286FA05500D618D6 /* Assets.xcassets */; };
 		C4941BA5286FA05500D618D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4941BA4286FA05500D618D6 /* Preview Assets.xcassets */; };
-		C4941BB3286FA67A00D618D6 /* RealModule in Frameworks */ = {isa = PBXBuildFile; productRef = C4941BB2286FA67A00D618D6 /* RealModule */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,9 @@
 		C4187CAF287248B7003B0820 /* Token.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Token.swift; sourceTree = "<group>"; };
 		C4187CB1287248E0003B0820 /* Evaluator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Evaluator.swift; sourceTree = "<group>"; };
 		C4187CB728725A21003B0820 /* Binding+onChange.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Binding+onChange.swift"; sourceTree = "<group>"; };
+		C4187CB92872B568003B0820 /* ButtonPanelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonPanelView.swift; sourceTree = "<group>"; };
+		C4187CBB2872B575003B0820 /* DisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisplayView.swift; sourceTree = "<group>"; };
+		C4187CBD2872B5AE003B0820 /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		C4941B9A286FA05400D618D6 /* Breeze.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Breeze.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C4941B9D286FA05400D618D6 /* BreezeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreezeApp.swift; sourceTree = "<group>"; };
 		C4941B9F286FA05400D618D6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -37,7 +42,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				C4187CB528724934003B0820 /* Expression in Frameworks */,
-				C4941BB3286FA67A00D618D6 /* RealModule in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -113,6 +117,9 @@
 			isa = PBXGroup;
 			children = (
 				C4941B9F286FA05400D618D6 /* ContentView.swift */,
+				C4187CB92872B568003B0820 /* ButtonPanelView.swift */,
+				C4187CBB2872B575003B0820 /* DisplayView.swift */,
+				C4187CBD2872B5AE003B0820 /* ButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -156,7 +163,6 @@
 			);
 			name = Breeze;
 			packageProductDependencies = (
-				C4941BB2286FA67A00D618D6 /* RealModule */,
 				C4187CB428724934003B0820 /* Expression */,
 			);
 			productName = Breeze;
@@ -188,7 +194,6 @@
 			);
 			mainGroup = C4941B91286FA05400D618D6;
 			packageReferences = (
-				C4941BB1286FA67A00D618D6 /* XCRemoteSwiftPackageReference "swift-numerics" */,
 				C4187CB328724934003B0820 /* XCRemoteSwiftPackageReference "Expression" */,
 			);
 			productRefGroup = C4941B9B286FA05400D618D6 /* Products */;
@@ -221,8 +226,11 @@
 				C4187CB828725A21003B0820 /* Binding+onChange.swift in Sources */,
 				C4187CB0287248B7003B0820 /* Token.swift in Sources */,
 				C4941BA0286FA05400D618D6 /* ContentView.swift in Sources */,
+				C4187CBA2872B568003B0820 /* ButtonPanelView.swift in Sources */,
+				C4187CBC2872B575003B0820 /* DisplayView.swift in Sources */,
 				C4187CB2287248E0003B0820 /* Evaluator.swift in Sources */,
 				C4941B9E286FA05400D618D6 /* BreezeApp.swift in Sources */,
+				C4187CBE2872B5AE003B0820 /* ButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -357,8 +365,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -386,8 +396,10 @@
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -433,14 +445,6 @@
 				minimumVersion = 0.13.6;
 			};
 		};
-		C4941BB1286FA67A00D618D6 /* XCRemoteSwiftPackageReference "swift-numerics" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/apple/swift-numerics.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -448,11 +452,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C4187CB328724934003B0820 /* XCRemoteSwiftPackageReference "Expression" */;
 			productName = Expression;
-		};
-		C4941BB2286FA67A00D618D6 /* RealModule */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C4941BB1286FA67A00D618D6 /* XCRemoteSwiftPackageReference "swift-numerics" */;
-			productName = RealModule;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

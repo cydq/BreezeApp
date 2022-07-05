@@ -8,27 +8,33 @@
 import Foundation
 
 struct Input {
-    private var tokens: [Token] = []
+    private var tokens: [String] = []
     
     var string: String {
-        var s = ""
-        
-        for token in tokens {
-            s += token.rawValue
-        }
-        
-        return s
+        return tokens.reduce("", +)
     }
     
     mutating func push(_ token: Token) {
-        tokens.append(token)
+        tokens.append(token.rawValue)
     }
     
-    mutating func pop() -> Token? {
+    mutating func pushFn(_ token: Token) {
+        tokens.append(token.rawValueFn)
+    }
+    
+    mutating func push(_ str: String) {
+        tokens.append(str)
+    }
+    
+    mutating func pop() -> String? {
         return tokens.popLast()
     }
     
     mutating func delete() {
         let _ = pop()
+    }
+    
+    mutating func clear() {
+        tokens = []
     }
 }
