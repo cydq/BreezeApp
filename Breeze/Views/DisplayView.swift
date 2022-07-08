@@ -12,13 +12,29 @@ struct DisplayView: View {
     
     var body: some View {
         VStack {
-            Spacer()
-            Text(input.string)
-            Spacer()
-            Text(evaluate(expr: input.string))
-            Spacer()
+            HStack {
+                Spacer()
+                
+                Text(input.string)
+                    .font(.largeTitle)
+                    .multilineTextAlignment(.trailing)
+                    .foregroundColor(currentTheme.textPrimary)
+                    .padding()
+            }
+            
+            HStack {
+                Spacer()
+                
+                
+                Text(evaluateOr(expr: input.string))
+                    .font(.title)
+                    .multilineTextAlignment(.trailing)
+                    .foregroundColor(currentTheme.textHighlight)
+                    .padding()
+            }
         }
             .frame(minHeight: 250)
+            .background(currentTheme.backgroundDisplay)
     }
 }
 

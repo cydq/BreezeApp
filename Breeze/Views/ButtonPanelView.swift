@@ -13,38 +13,43 @@ struct ButtonPanelView: View {
     var body: some View {
         VStack {
             HStack {
-                ButtonView("AC") { input.clear() }
+                ButtonView("AC", type: .highlight) { input.clear() }
+                
                 ButtonView("(") { input.push(.open) }
                 ButtonView(")") { input.push(.close) }
-                ButtonView("<") { input.delete() }
+                
+                ButtonView("<", type: .highlight) { input.delete() }
             }
             
             HStack {
                 ButtonView("7") { input.push(.seven) }
                 ButtonView("8") { input.push(.eight) }
                 ButtonView("9") { input.push(.nine) }
-                ButtonView("/") { input.push(.divide) }
+                
+                ButtonView("/", type: .accent) { input.push(.divide) }
             }
             
             HStack {
                 ButtonView("4") { input.push(.four) }
                 ButtonView("5") { input.push(.five) }
                 ButtonView("6") { input.push(.six) }
-                ButtonView("*") { input.push(.times) }
+                
+                ButtonView("x", type: .accent) { input.push(.times) }
             }
             
             HStack {
                 ButtonView("1") { input.push(.one) }
                 ButtonView("2") { input.push(.two) }
                 ButtonView("3") { input.push(.three) }
-                ButtonView("-") { input.push(.minus) }
+                
+                ButtonView("-", type: .accent) { input.push(.minus) }
             }
             
             HStack {
                 ButtonView(",") { input.push(.comma) }
                 ButtonView("0") { input.push(.zero) }
                 ButtonView(".") { input.push(.dot) }
-                ButtonView("+") { input.push(.plus) }
+                ButtonView("+", type: .accent) { input.push(.plus) }
             }
             
             HStack {
@@ -61,7 +66,8 @@ struct ButtonPanelView: View {
                 }
             }
         }
-        .padding()
+            .padding()
+            .background(currentTheme.background)
     }
 }
 

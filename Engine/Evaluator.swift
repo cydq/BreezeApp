@@ -174,6 +174,18 @@ func evaluate(expr: String) -> String {
     }
 }
 
+func evaluateOr(expr: String, err: String = "Error") -> String {
+    if expr == "" {
+        return ""
+    }
+    
+    do {
+        return try String(expression(expr: expr).evaluate())
+    } catch {
+        return err
+    }
+}
+
 private func calculateMedian(array: [Double]) -> Double {
     let sorted = array.sorted()
     if sorted.count % 2 == 0 {
