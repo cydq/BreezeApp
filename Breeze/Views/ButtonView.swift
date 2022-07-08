@@ -15,11 +15,11 @@ extension ButtonType {
     var color: Color {
         switch self {
         case .primary:
-            return currentTheme.textPrimary
+            return Settings.standard.theme.textPrimary
         case .accent:
-            return currentTheme.textAccent
+            return Settings.standard.theme.textAccent
         case .highlight:
-            return currentTheme.textHighlight
+            return Settings.standard.theme.textHighlight
         }
     }
 }

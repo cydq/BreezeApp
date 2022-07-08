@@ -18,7 +18,7 @@ struct DisplayView: View {
                 Text(input.string)
                     .font(.largeTitle)
                     .multilineTextAlignment(.trailing)
-                    .foregroundColor(currentTheme.textPrimary)
+                    .foregroundColor(Settings.standard.theme.textPrimary)
                     .padding()
             }
             
@@ -29,12 +29,12 @@ struct DisplayView: View {
                 Text(evaluateOr(expr: input.string))
                     .font(.title)
                     .multilineTextAlignment(.trailing)
-                    .foregroundColor(currentTheme.textHighlight)
+                    .foregroundColor(Settings.standard.theme.textHighlight)
                     .padding()
             }
         }
             .frame(minHeight: 250)
-            .background(currentTheme.backgroundDisplay)
+            .background(Settings.standard.theme.backgroundDisplay)
     }
 }
 

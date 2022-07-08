@@ -21,6 +21,7 @@
 		C4941BA5286FA05500D618D6 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C4941BA4286FA05500D618D6 /* Preview Assets.xcassets */; };
 		C4D2FB572877C5A4001E3DBD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2FB562877C5A4001E3DBD /* Theme.swift */; };
 		C4D2FB592877CEA4001E3DBD /* Color+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2FB582877CEA4001E3DBD /* Color+init.swift */; };
+		C4D2FB5B28786BAD001E3DBD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2FB5A28786BAD001E3DBD /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		C4941BA4286FA05500D618D6 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C4D2FB562877C5A4001E3DBD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		C4D2FB582877CEA4001E3DBD /* Color+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+init.swift"; sourceTree = "<group>"; };
+		C4D2FB5A28786BAD001E3DBD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,7 +97,7 @@
 				C4941BAD286FA34C00D618D6 /* Controllers */,
 				C4941BB0286FA57000D618D6 /* Components */,
 				C4941BAC286FA34800D618D6 /* Views */,
-				C4D2FB552877C585001E3DBD /* Themes */,
+				C4D2FB552877C585001E3DBD /* Settings */,
 				C4187CB628725A11003B0820 /* Utilities */,
 				C4941BAF286FA37300D618D6 /* Resources */,
 				C4941BA3286FA05500D618D6 /* Preview Content */,
@@ -152,12 +154,13 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		C4D2FB552877C585001E3DBD /* Themes */ = {
+		C4D2FB552877C585001E3DBD /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				C4D2FB562877C5A4001E3DBD /* Theme.swift */,
+				C4D2FB5A28786BAD001E3DBD /* Settings.swift */,
 			);
-			path = Themes;
+			path = Settings;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,6 +245,7 @@
 				C4187CB0287248B7003B0820 /* Token.swift in Sources */,
 				C4941BA0286FA05400D618D6 /* ContentView.swift in Sources */,
 				C4187CBA2872B568003B0820 /* ButtonPanelView.swift in Sources */,
+				C4D2FB5B28786BAD001E3DBD /* Settings.swift in Sources */,
 				C4187CBC2872B575003B0820 /* DisplayView.swift in Sources */,
 				C4187CB2287248E0003B0820 /* Evaluator.swift in Sources */,
 				C4D2FB572877C5A4001E3DBD /* Theme.swift in Sources */,

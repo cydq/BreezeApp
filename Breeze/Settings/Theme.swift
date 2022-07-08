@@ -9,6 +9,7 @@ import Foundation
 import SwiftUI
 
 struct Theme {
+    // Theme
     let id: String
     var name: String = "Theme"
     
@@ -35,31 +36,17 @@ struct Theme {
     var textPrimary: Color {
         return Color("\(id)TextColorPrimary")
     }
-}
+    
+    // Static
+    static let themes: [Theme] = [
+        Theme(id: "Green", name: "Green")
+    ]
 
-let themes: [Theme] = [
-    Theme(id: "Green", name: "Green")
-]
-
-func getTheme(themeName: String?) -> Theme {
-    if themeName != nil {
-        for theme in themes {
-            if themeName! == theme.name {
-                return theme
-            }
-        }
+    static func get(name: String?) -> Theme {
+        return themes.first { t in t.name == name } ?? themes[0]
     }
-    return themes[0]
-}
 
-func setTheme(theme: Theme) {
-    UserDefaults.standard.set(theme.name, forKey: "theme")
-}
-
-func setTheme(name: String) {
-    UserDefaults.standard.set(name, forKey: "theme")
-}
-
-var currentTheme: Theme {
-    return getTheme(themeName: UserDefaults.standard.string(forKey: "theme"))
+    static func get(id: String?) -> Theme {
+        return themes.first { t in t.id == id } ?? themes[0]
+    }
 }

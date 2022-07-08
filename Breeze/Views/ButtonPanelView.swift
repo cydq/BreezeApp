@@ -67,7 +67,7 @@ struct ButtonPanelView: View {
             }
         }
             .padding()
-            .background(currentTheme.background)
+            .background(Settings.standard.theme.background)
     }
 }
 
