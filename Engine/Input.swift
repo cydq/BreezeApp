@@ -1,18 +1,9 @@
-//
-//  Input.swift
-//  Breeze
-//
-//  Created by Brian Shao on 2022-07-03.
-//
-
 import Foundation
 
 struct Input {
     private var tokens: [String] = []
     
-    var string: String {
-        return tokens.reduce("", +)
-    }
+    var string: String { tokens.reduce("", +) }
     
     mutating func push(_ token: Token) {
         tokens.append(token.rawValue)
@@ -27,7 +18,7 @@ struct Input {
     }
     
     mutating func pop() -> String? {
-        return tokens.popLast()
+        tokens.popLast()
     }
     
     mutating func delete() {

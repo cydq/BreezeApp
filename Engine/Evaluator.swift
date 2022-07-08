@@ -1,10 +1,3 @@
-//
-//  Evaluator.swift
-//  Breeze
-//
-//  Created by Brian Shao on 2022-07-03.
-//
-
 import Expression
 import Foundation
 
@@ -14,98 +7,98 @@ let phi = 1.6180339887498948482045868343656381177203091798058
 let tau = 6.28318530717958647692528676655900576839433879875021
 
 func expression(expr: String) -> Expression {
-    return Expression(Expression.parse(expr), pureSymbols: { symbol in
+    Expression(Expression.parse(expr), pureSymbols: { symbol in
         switch symbol {
         
         // Variables
         case .variable(Token.e.rawValue):
-            return { _ in return e }
+            return { _ in e }
         case .variable(Token.pi.rawValue):
-            return { _ in return pi }
+            return { _ in pi }
         case .variable(Token.phi.rawValue):
-            return { _ in return phi }
+            return { _ in phi }
         case .variable(Token.tau.rawValue):
-            return { _ in return tau }
+            return { _ in tau }
             
         // Prefix
         case .prefix(Token.sqrt.rawValue):
-            return { a in return sqrt(a[0]) }
+            return { a in sqrt(a[0]) }
         case .prefix(Token.cbrt.rawValue):
-            return { a in return pow(a[0], 1.0 / 3)}
+            return { a in pow(a[0], 1.0 / 3) }
         case .prefix(Token.antiln.rawValue):
-            return { a in return pow(e, a[0]) }
+            return { a in pow(e, a[0]) }
         case .prefix(Token.antilog.rawValue):
-            return { a in return pow(10, a[0]) }
+            return { a in pow(10, a[0]) }
         case .prefix(Token.antilog2.rawValue):
-            return { a in return pow(2, a[0]) }
+            return { a in pow(2, a[0]) }
         case .prefix(Token.minus.rawValue):
-            return { a in return a[0] * -1.0 }
+            return { a in a[0] * -1.0 }
             
         // Infix
         case .infix(Token.plus.rawValue):
-            return { a in return a[0] + a[1] }
+            return { a in a[0] + a[1] }
         case .infix(Token.times.rawValue):
-            return { a in return a[0] * a[1] }
+            return { a in a[0] * a[1] }
         case .infix(Token.minus.rawValue):
-            return { a in return a[0] - a[1] }
+            return { a in a[0] - a[1] }
         case .infix(Token.divide.rawValue):
-            return { a in return a[0] / a[1] }
+            return { a in a[0] / a[1] }
         case .infix(Token.exp.rawValue):
-            return { a in return pow(a[0], a[1]) }
+            return { a in pow(a[0], a[1]) }
         case .infix(Token.ee.rawValue):
-            return { a in return a[0] * pow(10, a[1]) }
+            return { a in a[0] * pow(10, a[1]) }
             
         // Posftix
         case .postfix(Token.factorial.rawValue):
-            return { a in return (1...Int(a[0])).map(Double.init).reduce(1.0, *) }
+            return { a in (1...Int(a[0])).map(Double.init).reduce(1.0, *) }
         case .postfix(Token.square.rawValue):
-            return { a in return pow(a[0], 2) }
+            return { a in pow(a[0], 2) }
         case .postfix(Token.cube.rawValue):
-            return { a in return pow(a[0], 3) }
+            return { a in pow(a[0], 3) }
         case .postfix(Token.reciprocal.rawValue):
-            return { a in return 1 / a[0] }
+            return { a in 1 / a[0] }
         case .postfix(Token.percent.rawValue):
-            return { a in return a[0] * 0.01 }
+            return { a in a[0] * 0.01 }
             
         // Functions
         case .function(Token.log.rawValue, arity: 1):
-            return { a in return log10(a[0]) }
+            return { a in log10(a[0]) }
         case .function(Token.log2.rawValue, arity: 1):
-            return { a in return log2(a[0]) }
+            return { a in log2(a[0]) }
         case .function(Token.ln.rawValue, arity: 1):
-            return { a in return log(a[0]) }
+            return { a in log(a[0]) }
         case .function(Token.logn.rawValue, arity: 2):
-            return { a in return log(a[0]) / log(a[1]) }
+            return { a in log(a[0]) / log(a[1]) }
         case .function(Token.nthroot.rawValue, arity: 2):
-            return { a in return pow(a[0], 1 / a[1]) }
+            return { a in pow(a[0], 1 / a[1]) }
             
         case .function(Token.sin.rawValue, arity: 1):
-            return { a in return sin(a[0]) }
+            return { a in sin(a[0]) }
         case .function(Token.cos.rawValue, arity: 1):
-            return { a in return cos(a[0]) }
+            return { a in cos(a[0]) }
         case .function(Token.tan.rawValue, arity: 1):
-            return { a in return tan(a[0]) }
+            return { a in tan(a[0]) }
         case .function(Token.asin.rawValue, arity: 1):
-            return { a in return asin(a[0]) }
+            return { a in asin(a[0]) }
         case .function(Token.acos.rawValue, arity: 1):
-            return { a in return acos(a[0]) }
+            return { a in acos(a[0]) }
         case .function(Token.atan.rawValue, arity: 1):
-            return { a in return atan(a[0]) }
+            return { a in atan(a[0]) }
         case .function(Token.atan2.rawValue, arity: 2):
-            return { a in return atan2(a[0], a[1]) }
+            return { a in atan2(a[0], a[1]) }
             
         case .function(Token.sinh.rawValue, arity: 1):
-            return { a in return sinh(a[0]) }
+            return { a in sinh(a[0]) }
         case .function(Token.cosh.rawValue, arity: 1):
-            return { a in return cosh(a[0]) }
+            return { a in cosh(a[0]) }
         case .function(Token.tanh.rawValue, arity: 1):
-            return { a in return tanh(a[0]) }
+            return { a in tanh(a[0]) }
         case .function(Token.asinh.rawValue, arity: 1):
-            return { a in return asinh(a[0]) }
+            return { a in asinh(a[0]) }
         case .function(Token.acosh.rawValue, arity: 1):
-            return { a in return acosh(a[0]) }
+            return { a in acosh(a[0]) }
         case .function(Token.atanh.rawValue, arity: 1):
-            return { a in return atanh(a[0]) }
+            return { a in atanh(a[0]) }
             
         case .function(Token.rand.rawValue, arity: 2):
             return { a in
@@ -118,21 +111,21 @@ func expression(expr: String) -> Expression {
             }
         
         case .function(Token.sum.rawValue, arity: _):
-            return { a in return a.count < 1 ? Double.nan : a.reduce(0, +) }
+            return { a in a.count < 1 ? Double.nan : a.reduce(0, +) }
         case .function(Token.product.rawValue, arity: _):
-            return { a in return a.count < 1 ? Double.nan : a.reduce(1, *) }
+            return { a in a.count < 1 ? Double.nan : a.reduce(1, *) }
         case .function(Token.count.rawValue, arity: _):
-            return { a in return a.count < 1 ? Double.nan : Double(a.count) }
+            return { a in a.count < 1 ? Double.nan : Double(a.count) }
         
         case .function(Token.min.rawValue, arity: _):
-            return { a in return a.count < 1 ? Double.nan : a.min() ?? Double.nan }
+            return { a in a.count < 1 ? Double.nan : a.min() ?? Double.nan }
         case .function(Token.max.rawValue, arity: _):
-            return { a in return a.count < 1 ? Double.nan : a.max() ?? Double.nan }
+            return { a in a.count < 1 ? Double.nan : a.max() ?? Double.nan }
             
         case .function(Token.mean.rawValue, arity: _):
-            return { a in return a.count < 1 ? Double.nan : a.reduce(0, +) / Double(a.count) }
+            return { a in a.count < 1 ? Double.nan : a.reduce(0, +) / Double(a.count) }
         case .function(Token.median.rawValue, arity: _):
-            return { a in return a.count < 1 ? Double.nan : calculateMedian(array: a) }
+            return { a in a.count < 1 ? Double.nan : calculateMedian(array: a) }
         case .function(Token.mode.rawValue, arity: _):
             return { a in
                 if a.count < 1 {

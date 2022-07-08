@@ -1,11 +1,3 @@
-//
-//  Color+init.swift
-//  Breeze
-//
-//  Created by Brian Shao on 2022/07/07.
-//
-
-import Foundation
 import SwiftUI
 
 extension Color {

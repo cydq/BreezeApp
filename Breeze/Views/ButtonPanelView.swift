@@ -1,10 +1,3 @@
-//
-//  ButtonPanelView.swift
-//  Breeze
-//
-//  Created by Brian Shao on 2022-07-03.
-//
-
 import SwiftUI
 
 struct ButtonPanelView: View {

@@ -1,10 +1,3 @@
-//
-//  Settings.swift
-//  Breeze
-//
-//  Created by Brian Shao on 2022/07/08.
-//
-
 import Foundation
 
 struct Settings {
@@ -13,7 +6,7 @@ struct Settings {
     let defaults: UserDefaults
     
     var theme: Theme {
-        get { return Theme.get(id: defaults.string(forKey: "theme")) }
+        get { Theme.get(id: defaults.string(forKey: "theme")) }
         set(v) { defaults.set(v.id, forKey: "theme") }
     }
 }

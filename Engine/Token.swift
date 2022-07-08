@@ -1,10 +1,3 @@
-//
-//  Token.swift
-//  Breeze
-//
-//  Created by Brian Shao on 2022-07-03.
-//
-
 import Foundation
 
 enum Token: String {
@@ -44,7 +37,5 @@ enum Token: String {
     case dot = ".", comma = ","
     case open = "(", close = ")"
     
-    var rawValueFn: String {
-        return "\(rawValue)("
-    }
+    var rawValueFn: String { "\(rawValue)(" }
 }
