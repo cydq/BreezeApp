@@ -166,6 +166,7 @@ struct ButtonPanelView: View {
                     ButtonView("=", type: .highlight) { equals() }
                 }
             }
+                .padding([.top, .leading, .trailing])
         }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .background(Settings.standard.theme.background)
