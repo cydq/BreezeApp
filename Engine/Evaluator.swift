@@ -11,96 +11,96 @@ func expression(expr: String) -> Expression {
         switch symbol {
         
         // Variables
-        case .variable(Token.e.rawValue):
+        case .variable(SymbolToken.e.expr):
             return { _ in e }
-        case .variable(Token.pi.rawValue):
+        case .variable(SymbolToken.pi.expr):
             return { _ in pi }
-        case .variable(Token.phi.rawValue):
+        case .variable(SymbolToken.phi.expr):
             return { _ in phi }
-        case .variable(Token.tau.rawValue):
+        case .variable(SymbolToken.tau.expr):
             return { _ in tau }
             
         // Prefix
-        case .prefix(Token.sqrt.rawValue):
+        case .prefix(PrefixToken.sqrt.expr):
             return { a in sqrt(a[0]) }
-        case .prefix(Token.cbrt.rawValue):
+        case .prefix(PrefixToken.cbrt.expr):
             return { a in pow(a[0], 1.0 / 3) }
-        case .prefix(Token.antiln.rawValue):
+        case .prefix(PrefixToken.antiln.expr):
             return { a in pow(e, a[0]) }
-        case .prefix(Token.antilog.rawValue):
+        case .prefix(PrefixToken.antilog.expr):
             return { a in pow(10, a[0]) }
-        case .prefix(Token.antilog2.rawValue):
+        case .prefix(PrefixToken.antilog2.expr):
             return { a in pow(2, a[0]) }
-        case .prefix(Token.minus.rawValue):
+        case .prefix(InfixToken.minus.expr):
             return { a in a[0] * -1.0 }
             
         // Infix
-        case .infix(Token.plus.rawValue):
+        case .infix(InfixToken.plus.expr):
             return { a in a[0] + a[1] }
-        case .infix(Token.times.rawValue):
+        case .infix(InfixToken.times.expr):
             return { a in a[0] * a[1] }
-        case .infix(Token.minus.rawValue):
+        case .infix(InfixToken.minus.expr):
             return { a in a[0] - a[1] }
-        case .infix(Token.divide.rawValue):
+        case .infix(InfixToken.divide.expr):
             return { a in a[0] / a[1] }
-        case .infix(Token.exp.rawValue):
+        case .infix(InfixToken.exp.expr):
             return { a in pow(a[0], a[1]) }
-        case .infix(Token.ee.rawValue):
+        case .infix(InfixToken.ee.expr):
             return { a in a[0] * pow(10, a[1]) }
             
         // Posftix
-        case .postfix(Token.factorial.rawValue):
+        case .postfix(PostfixToken.factorial.expr):
             return { a in (1...Int(a[0])).map(Double.init).reduce(1.0, *) }
-        case .postfix(Token.square.rawValue):
+        case .postfix(PostfixToken.square.expr):
             return { a in pow(a[0], 2) }
-        case .postfix(Token.cube.rawValue):
+        case .postfix(PostfixToken.cube.expr):
             return { a in pow(a[0], 3) }
-        case .postfix(Token.reciprocal.rawValue):
+        case .postfix(PostfixToken.reciprocal.expr):
             return { a in 1 / a[0] }
-        case .postfix(Token.percent.rawValue):
+        case .postfix(PostfixToken.percent.expr):
             return { a in a[0] * 0.01 }
             
         // Functions
-        case .function(Token.log.rawValue, arity: 1):
+        case .function(FunctionToken.log.expr, arity: 1):
             return { a in log10(a[0]) }
-        case .function(Token.log2.rawValue, arity: 1):
+        case .function(FunctionToken.log2.expr, arity: 1):
             return { a in log2(a[0]) }
-        case .function(Token.ln.rawValue, arity: 1):
+        case .function(FunctionToken.ln.expr, arity: 1):
             return { a in log(a[0]) }
-        case .function(Token.logn.rawValue, arity: 2):
+        case .function(FunctionToken.logn.expr, arity: 2):
             return { a in log(a[0]) / log(a[1]) }
-        case .function(Token.nthroot.rawValue, arity: 2):
+        case .function(FunctionToken.nthroot.expr, arity: 2):
             return { a in pow(a[0], 1 / a[1]) }
             
-        case .function(Token.sin.rawValue, arity: 1):
+        case .function(FunctionToken.sin.expr, arity: 1):
             return { a in sin(a[0]) }
-        case .function(Token.cos.rawValue, arity: 1):
+        case .function(FunctionToken.cos.expr, arity: 1):
             return { a in cos(a[0]) }
-        case .function(Token.tan.rawValue, arity: 1):
+        case .function(FunctionToken.tan.expr, arity: 1):
             return { a in tan(a[0]) }
-        case .function(Token.asin.rawValue, arity: 1):
+        case .function(FunctionToken.asin.expr, arity: 1):
             return { a in asin(a[0]) }
-        case .function(Token.acos.rawValue, arity: 1):
+        case .function(FunctionToken.acos.expr, arity: 1):
             return { a in acos(a[0]) }
-        case .function(Token.atan.rawValue, arity: 1):
+        case .function(FunctionToken.atan.expr, arity: 1):
             return { a in atan(a[0]) }
-        case .function(Token.atan2.rawValue, arity: 2):
+        case .function(FunctionToken.atan2.expr, arity: 2):
             return { a in atan2(a[0], a[1]) }
             
-        case .function(Token.sinh.rawValue, arity: 1):
+        case .function(FunctionToken.sinh.expr, arity: 1):
             return { a in sinh(a[0]) }
-        case .function(Token.cosh.rawValue, arity: 1):
+        case .function(FunctionToken.cosh.expr, arity: 1):
             return { a in cosh(a[0]) }
-        case .function(Token.tanh.rawValue, arity: 1):
+        case .function(FunctionToken.tanh.expr, arity: 1):
             return { a in tanh(a[0]) }
-        case .function(Token.asinh.rawValue, arity: 1):
+        case .function(FunctionToken.asinh.expr, arity: 1):
             return { a in asinh(a[0]) }
-        case .function(Token.acosh.rawValue, arity: 1):
+        case .function(FunctionToken.acosh.expr, arity: 1):
             return { a in acosh(a[0]) }
-        case .function(Token.atanh.rawValue, arity: 1):
+        case .function(FunctionToken.atanh.expr, arity: 1):
             return { a in atanh(a[0]) }
             
-        case .function(Token.rand.rawValue, arity: 2):
+        case .function(FunctionToken.rand.expr, arity: 2):
             return { a in
                 let low = Int(a[0].rounded(.up))
                 let high = Int(a[1].rounded(.down))
@@ -110,23 +110,23 @@ func expression(expr: String) -> Expression {
                     : Double(Int.random(in: low...high))
             }
         
-        case .function(Token.sum.rawValue, arity: _):
+        case .function(FunctionToken.sum.expr, arity: _):
             return { a in a.count < 1 ? Double.nan : a.reduce(0, +) }
-        case .function(Token.product.rawValue, arity: _):
+        case .function(FunctionToken.product.expr, arity: _):
             return { a in a.count < 1 ? Double.nan : a.reduce(1, *) }
-        case .function(Token.count.rawValue, arity: _):
+        case .function(FunctionToken.count.expr, arity: _):
             return { a in a.count < 1 ? Double.nan : Double(a.count) }
         
-        case .function(Token.min.rawValue, arity: _):
+        case .function(FunctionToken.min.expr, arity: _):
             return { a in a.count < 1 ? Double.nan : a.min() ?? Double.nan }
-        case .function(Token.max.rawValue, arity: _):
+        case .function(FunctionToken.max.expr, arity: _):
             return { a in a.count < 1 ? Double.nan : a.max() ?? Double.nan }
             
-        case .function(Token.mean.rawValue, arity: _):
+        case .function(FunctionToken.mean.expr, arity: _):
             return { a in a.count < 1 ? Double.nan : a.reduce(0, +) / Double(a.count) }
-        case .function(Token.median.rawValue, arity: _):
+        case .function(FunctionToken.median.expr, arity: _):
             return { a in a.count < 1 ? Double.nan : calculateMedian(array: a) }
-        case .function(Token.mode.rawValue, arity: _):
+        case .function(FunctionToken.mode.expr, arity: _):
             return { a in
                 if a.count < 1 {
                     return Double.nan
@@ -134,7 +134,7 @@ func expression(expr: String) -> Expression {
                 let set = NSCountedSet(array: a)
                 return set.max { set.count(for: $0) < set.count(for: $1) } as! Double
             }
-        case .function(Token.stddev.rawValue, arity: _):
+        case .function(FunctionToken.stddev.expr, arity: _):
             return { a in
                 if a.count < 1 {
                     return Double.nan

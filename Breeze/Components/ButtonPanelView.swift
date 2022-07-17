@@ -8,41 +8,41 @@ struct ButtonPanelView: View {
             HStack {
                 ButtonView("AC", type: .highlight) { input.clear() }
                 
-                ButtonView("(") { input.push(.open) }
-                ButtonView(")") { input.push(.close) }
+                ButtonView("(") { input.push(Token(.open)) }
+                ButtonView(")") { input.push(Token(.close)) }
                 
                 ButtonView("<", type: .highlight) { input.delete() }
             }
             
             HStack {
-                ButtonView("7") { input.push(.seven) }
-                ButtonView("8") { input.push(.eight) }
-                ButtonView("9") { input.push(.nine) }
+                ButtonView("7") { input.push(Token(.seven)) }
+                ButtonView("8") { input.push(Token(.eight)) }
+                ButtonView("9") { input.push(Token(.nine)) }
                 
-                ButtonView("/", type: .accent) { input.push(.divide) }
+                ButtonView("/", type: .accent) { input.push(Token(.divide)) }
             }
             
             HStack {
-                ButtonView("4") { input.push(.four) }
-                ButtonView("5") { input.push(.five) }
-                ButtonView("6") { input.push(.six) }
+                ButtonView("4") { input.push(Token(.four)) }
+                ButtonView("5") { input.push(Token(.five)) }
+                ButtonView("6") { input.push(Token(.six)) }
                 
-                ButtonView("x", type: .accent) { input.push(.times) }
+                ButtonView("x", type: .accent) { input.push(Token(.times)) }
             }
             
             HStack {
-                ButtonView("1") { input.push(.one) }
-                ButtonView("2") { input.push(.two) }
-                ButtonView("3") { input.push(.three) }
+                ButtonView("1") { input.push(Token(.one)) }
+                ButtonView("2") { input.push(Token(.two)) }
+                ButtonView("3") { input.push(Token(.three)) }
                 
-                ButtonView("-", type: .accent) { input.push(.minus) }
+                ButtonView("-", type: .accent) { input.push(Token(.minus)) }
             }
             
             HStack {
-                ButtonView(",") { input.push(.comma) }
-                ButtonView("0") { input.push(.zero) }
-                ButtonView(".") { input.push(.dot) }
-                ButtonView("+", type: .accent) { input.push(.plus) }
+                ButtonView(",") { input.push(Token(.comma)) }
+                ButtonView("0") { input.push(Token(.zero)) }
+                ButtonView(".") { input.push(Token(.dot)) }
+                ButtonView("+", type: .accent) { input.push(Token(.plus)) }
             }
             
             HStack {
@@ -55,7 +55,7 @@ struct ButtonPanelView: View {
                     }
                     
                     input.clear()
-                    input.push(String(result))
+                    input.push(.literal(String(result)))
                 }
             }
         }

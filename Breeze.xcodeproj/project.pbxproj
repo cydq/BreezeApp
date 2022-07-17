@@ -22,6 +22,7 @@
 		C4D2FB572877C5A4001E3DBD /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2FB562877C5A4001E3DBD /* Theme.swift */; };
 		C4D2FB592877CEA4001E3DBD /* Color+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2FB582877CEA4001E3DBD /* Color+init.swift */; };
 		C4D2FB5B28786BAD001E3DBD /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D2FB5A28786BAD001E3DBD /* Settings.swift */; };
+		C4F78C652883A9990010041F /* DragView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F78C642883A9990010041F /* DragView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		C4D2FB562877C5A4001E3DBD /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		C4D2FB582877CEA4001E3DBD /* Color+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+init.swift"; sourceTree = "<group>"; };
 		C4D2FB5A28786BAD001E3DBD /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		C4F78C642883A9990010041F /* DragView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DragView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,9 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				C4941B9F286FA05400D618D6 /* ContentView.swift */,
-				C4187CB92872B568003B0820 /* ButtonPanelView.swift */,
-				C4187CBB2872B575003B0820 /* DisplayView.swift */,
-				C4187CBD2872B5AE003B0820 /* ButtonView.swift */,
+				C4F78C642883A9990010041F /* DragView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -150,6 +150,9 @@
 		C4941BB0286FA57000D618D6 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				C4187CBB2872B575003B0820 /* DisplayView.swift */,
+				C4187CBD2872B5AE003B0820 /* ButtonView.swift */,
+				C4187CB92872B568003B0820 /* ButtonPanelView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				C4187CBC2872B575003B0820 /* DisplayView.swift in Sources */,
 				C4187CB2287248E0003B0820 /* Evaluator.swift in Sources */,
 				C4D2FB572877C5A4001E3DBD /* Theme.swift in Sources */,
+				C4F78C652883A9990010041F /* DragView.swift in Sources */,
 				C4941B9E286FA05400D618D6 /* BreezeApp.swift in Sources */,
 				C4187CBE2872B5AE003B0820 /* ButtonView.swift in Sources */,
 			);

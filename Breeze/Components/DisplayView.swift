@@ -13,20 +13,22 @@ struct DisplayView: View {
                     .multilineTextAlignment(.trailing)
                     .foregroundColor(Settings.standard.theme.textPrimary)
                     .padding()
+                    .lineLimit(1)
+                    .truncationMode(.head)
             }
             
             HStack {
                 Spacer()
-                
                 
                 Text(evaluateOr(expr: input.string))
                     .font(.title)
                     .multilineTextAlignment(.trailing)
                     .foregroundColor(Settings.standard.theme.textHighlight)
                     .padding()
+                    .lineLimit(1)
             }
         }
-            .frame(minHeight: 250)
+            .frame(minHeight: 200)
             .background(Settings.standard.theme.backgroundDisplay)
     }
 }
@@ -34,16 +36,16 @@ struct DisplayView: View {
 struct DisplayView_Previews: PreviewProvider {
     @State private static var input = ({ () -> Input in
         var input = Input()
-        input.push(.three)
-        input.push(.times)
-        input.pushFn(.stddev)
-        input.push(.three)
-        input.push(.four)
-        input.push(.comma)
-        input.pushFn(.cos)
-        input.push(.nine)
-        input.push(.close)
-        input.push(.close)
+        input.push(Token(.three))
+        input.push(Token(.times))
+        input.push(Token(.stddev))
+        input.push(Token(.three))
+        input.push(Token(.four))
+        input.push(Token(.comma))
+        input.push(Token(.cos))
+        input.push(Token(.nine))
+        input.push(Token(.close))
+        input.push(Token(.close))
         return input
     })()
     
