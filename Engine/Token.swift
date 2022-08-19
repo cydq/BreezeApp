@@ -146,11 +146,11 @@ enum PrefixToken: String {
         case .cbrt:
             return Text("³√")
         case .antiln:
-            return Text("e^")
+            return Text("eˣ")
         case .antilog:
-            return Text("10^")
+            return Text("10ˣ")
         case .antilog2:
-            return Text("2^")
+            return Text("2ˣ")
         }
     }
 }
@@ -192,10 +192,6 @@ enum PostfixToken: String {
     var expr: String { rawValue }
     
     var icon: Text {
-        self.display
-    }
-    
-    var display: Text {
         switch self {
         case .square:
             return Text("x²")
@@ -203,6 +199,19 @@ enum PostfixToken: String {
             return Text("x³")
         case .reciprocal:
             return Text("1/x")
+        default:
+            return self.display
+        }
+    }
+    
+    var display: Text {
+        switch self {
+        case .square:
+            return Text("²")
+        case .cube:
+            return Text("³")
+        case .reciprocal:
+            return Text("⁻¹")
         case .percent:
             return Text(Image(systemName: "percent"))
         default:

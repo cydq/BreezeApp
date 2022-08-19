@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ButtonPanelView: View {
+    @State private var isShowingAlert = false
+    
     @Binding var input: Input
     
     var body: some View {
@@ -53,7 +55,11 @@ struct ButtonPanelView: View {
                 HStack {
                     ButtonTokenView(Token(.percent), type: .accent, input: $input)
                     
-                    ButtonView("HIST") {}
+                    ButtonView(Text(Image(systemName: "gearshape")), type: .accent) {
+                        isShowingAlert = true
+                    }.alert("History, mode, and more, coming in the next update!", isPresented: $isShowingAlert) {
+                        Button("OK", role: .cancel) { }
+                    }
                     
                     ButtonTokenView(.answer, type: .accent, input: $input)
                     
@@ -109,7 +115,7 @@ struct ButtonPanelView: View {
                 HStack {
                     ButtonTokenView(Token(.percent), type: .accent, input: $input)
                     
-                    ButtonView("HIST") {}
+                    ButtonView(Text(Image(systemName: "gearshape")), type: .accent) {}
                     
                     ButtonTokenView(.answer, type: .accent, input: $input)
                     
@@ -165,7 +171,7 @@ struct ButtonPanelView: View {
                 HStack {
                     ButtonTokenView(Token(.percent), type: .accent, input: $input)
                     
-                    ButtonView("HIST") {}
+                    ButtonView(Text(Image(systemName: "gearshape")), type: .accent) {}
                     
                     ButtonTokenView(.answer, type: .accent, input: $input)
                     
