@@ -144,7 +144,7 @@ enum PrefixToken: String {
         case .sqrt:
             return Text("√")
         case .cbrt:
-            return Text("3√")
+            return Text("³√")
         case .antiln:
             return Text("e^")
         case .antilog:

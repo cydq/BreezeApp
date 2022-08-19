@@ -37,6 +37,9 @@ struct ButtonView: View {
     var body: some View {
         Button(action: handle) {
             self.text
+                .scaledToFill()
+                .minimumScaleFactor(0.5)
+                .lineLimit(1)
         }
             .foregroundColor(type.color)
             .buttonStyle(MyButtonStyle())
