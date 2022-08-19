@@ -50,6 +50,14 @@ struct DisplayView_Previews: PreviewProvider {
     })()
     
     static var previews: some View {
-        DisplayView(input: $input)
+        VStack {
+            input.display
+            
+            Text(input.expr)
+            
+            Text(evaluate(expr: input.expr))
+            
+            DisplayView(input: $input)
+        }
     }
 }

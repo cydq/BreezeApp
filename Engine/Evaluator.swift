@@ -61,46 +61,46 @@ func expression(expr: String) -> Expression {
             return { a in a[0] * 0.01 }
             
         // Functions
-        case .function(FunctionToken.log.expr, arity: 1):
+        case .function(FunctionToken.log.rawValue, arity: 1):
             return { a in log10(a[0]) }
-        case .function(FunctionToken.log2.expr, arity: 1):
+        case .function(FunctionToken.log2.rawValue, arity: 1):
             return { a in log2(a[0]) }
-        case .function(FunctionToken.ln.expr, arity: 1):
+        case .function(FunctionToken.ln.rawValue, arity: 1):
             return { a in log(a[0]) }
-        case .function(FunctionToken.logn.expr, arity: 2):
+        case .function(FunctionToken.logn.rawValue, arity: 2):
             return { a in log(a[0]) / log(a[1]) }
-        case .function(FunctionToken.nthroot.expr, arity: 2):
+        case .function(FunctionToken.nthroot.rawValue, arity: 2):
             return { a in pow(a[0], 1 / a[1]) }
             
-        case .function(FunctionToken.sin.expr, arity: 1):
+        case .function(FunctionToken.sin.rawValue, arity: 1):
             return { a in sin(a[0]) }
-        case .function(FunctionToken.cos.expr, arity: 1):
+        case .function(FunctionToken.cos.rawValue, arity: 1):
             return { a in cos(a[0]) }
-        case .function(FunctionToken.tan.expr, arity: 1):
+        case .function(FunctionToken.tan.rawValue, arity: 1):
             return { a in tan(a[0]) }
-        case .function(FunctionToken.asin.expr, arity: 1):
+        case .function(FunctionToken.asin.rawValue, arity: 1):
             return { a in asin(a[0]) }
-        case .function(FunctionToken.acos.expr, arity: 1):
+        case .function(FunctionToken.acos.rawValue, arity: 1):
             return { a in acos(a[0]) }
-        case .function(FunctionToken.atan.expr, arity: 1):
+        case .function(FunctionToken.atan.rawValue, arity: 1):
             return { a in atan(a[0]) }
-        case .function(FunctionToken.atan2.expr, arity: 2):
+        case .function(FunctionToken.atan2.rawValue, arity: 2):
             return { a in atan2(a[0], a[1]) }
             
-        case .function(FunctionToken.sinh.expr, arity: 1):
+        case .function(FunctionToken.sinh.rawValue, arity: 1):
             return { a in sinh(a[0]) }
-        case .function(FunctionToken.cosh.expr, arity: 1):
+        case .function(FunctionToken.cosh.rawValue, arity: 1):
             return { a in cosh(a[0]) }
-        case .function(FunctionToken.tanh.expr, arity: 1):
+        case .function(FunctionToken.tanh.rawValue, arity: 1):
             return { a in tanh(a[0]) }
-        case .function(FunctionToken.asinh.expr, arity: 1):
+        case .function(FunctionToken.asinh.rawValue, arity: 1):
             return { a in asinh(a[0]) }
-        case .function(FunctionToken.acosh.expr, arity: 1):
+        case .function(FunctionToken.acosh.rawValue, arity: 1):
             return { a in acosh(a[0]) }
-        case .function(FunctionToken.atanh.expr, arity: 1):
+        case .function(FunctionToken.atanh.rawValue, arity: 1):
             return { a in atanh(a[0]) }
             
-        case .function(FunctionToken.rand.expr, arity: 2):
+        case .function(FunctionToken.rand.rawValue, arity: 2):
             return { a in
                 let low = Int(a[0].rounded(.up))
                 let high = Int(a[1].rounded(.down))
@@ -110,23 +110,23 @@ func expression(expr: String) -> Expression {
                     : Double(Int.random(in: low...high))
             }
         
-        case .function(FunctionToken.sum.expr, arity: _):
+        case .function(FunctionToken.sum.rawValue, arity: _):
             return { a in a.count < 1 ? Double.nan : a.reduce(0, +) }
-        case .function(FunctionToken.product.expr, arity: _):
+        case .function(FunctionToken.product.rawValue, arity: _):
             return { a in a.count < 1 ? Double.nan : a.reduce(1, *) }
-        case .function(FunctionToken.count.expr, arity: _):
+        case .function(FunctionToken.count.rawValue, arity: _):
             return { a in a.count < 1 ? Double.nan : Double(a.count) }
         
-        case .function(FunctionToken.min.expr, arity: _):
+        case .function(FunctionToken.min.rawValue, arity: _):
             return { a in a.count < 1 ? Double.nan : a.min() ?? Double.nan }
-        case .function(FunctionToken.max.expr, arity: _):
+        case .function(FunctionToken.max.rawValue, arity: _):
             return { a in a.count < 1 ? Double.nan : a.max() ?? Double.nan }
             
-        case .function(FunctionToken.mean.expr, arity: _):
+        case .function(FunctionToken.mean.rawValue, arity: _):
             return { a in a.count < 1 ? Double.nan : a.reduce(0, +) / Double(a.count) }
-        case .function(FunctionToken.median.expr, arity: _):
+        case .function(FunctionToken.median.rawValue, arity: _):
             return { a in a.count < 1 ? Double.nan : calculateMedian(array: a) }
-        case .function(FunctionToken.mode.expr, arity: _):
+        case .function(FunctionToken.mode.rawValue, arity: _):
             return { a in
                 if a.count < 1 {
                     return Double.nan
@@ -134,7 +134,7 @@ func expression(expr: String) -> Expression {
                 let set = NSCountedSet(array: a)
                 return set.max { set.count(for: $0) < set.count(for: $1) } as! Double
             }
-        case .function(FunctionToken.stddev.expr, arity: _):
+        case .function(FunctionToken.stddev.rawValue, arity: _):
             return { a in
                 if a.count < 1 {
                     return Double.nan

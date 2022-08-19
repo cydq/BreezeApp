@@ -2,6 +2,7 @@ import SwiftUI
 
 enum Token {
     case literal(String)
+    case answer
     
     case symbol(SymbolToken)
     case prefix(PrefixToken)
@@ -38,6 +39,8 @@ enum Token {
         switch self {
         case let .literal(value):
             return value
+        case .answer:
+            return "\(previousResult)"
         case let .symbol(token):
             return token.expr
         case let .prefix(token):
@@ -55,6 +58,8 @@ enum Token {
         switch self {
         case let .literal(value):
             return Text(value)
+        case .answer:
+            return Text("ANS")
         case let .symbol(token):
             return token.icon
         case let .prefix(token):
@@ -72,6 +77,8 @@ enum Token {
         switch self {
         case let .literal(value):
             return Text(value)
+        case .answer:
+            return Text("ANS")
         case let .symbol(token):
             return token.display
         case let .prefix(token):
@@ -191,7 +198,7 @@ enum PostfixToken: String {
     var display: Text {
         switch self {
         case .square:
-            return Text("x2")
+            return Text("x²")
         case .cube:
             return Text("x³")
         case .reciprocal:
@@ -216,12 +223,6 @@ enum FunctionToken: String {
     case mean, median, mode, stddev
     
     var expr: String { "\(rawValue)(" }
-    
-    var icon: Text {
-        self.display
-    }
-    
-    var display: Text {
-        Text(rawValue)
-    }
+    var icon: Text { Text(rawValue) }
+    var display: Text { Text(expr) }
 }

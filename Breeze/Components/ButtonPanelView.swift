@@ -54,7 +54,9 @@ struct ButtonPanelView: View {
                     ButtonTokenView(Token(.percent), type: .accent, input: $input)
                     
                     ButtonView("HIST") {}
-                    ButtonView("ANS", type: .accent) {}
+                    
+                    ButtonTokenView(.answer, type: .accent, input: $input)
+                    
                     ButtonView(Text(Image(systemName: "equal")), type: .highlight) { equals() }
                 }
             }
@@ -108,7 +110,9 @@ struct ButtonPanelView: View {
                     ButtonTokenView(Token(.percent), type: .accent, input: $input)
                     
                     ButtonView("HIST") {}
-                    ButtonView("ANS", type: .accent) {}
+                    
+                    ButtonTokenView(.answer, type: .accent, input: $input)
+                    
                     ButtonView(Text(Image(systemName: "equal")), type: .highlight) { equals() }
                 }
             }
@@ -162,7 +166,9 @@ struct ButtonPanelView: View {
                     ButtonTokenView(Token(.percent), type: .accent, input: $input)
                     
                     ButtonView("HIST") {}
-                    ButtonView("ANS", type: .accent) {}
+                    
+                    ButtonTokenView(.answer, type: .accent, input: $input)
+                    
                     ButtonView(Text(Image(systemName: "equal")), type: .highlight) { equals() }
                 }
             }
@@ -179,6 +185,8 @@ struct ButtonPanelView: View {
         
         input.clear()
         input.push(.literal(String(result)))
+        
+        previousResult = result
     }
 }
 
