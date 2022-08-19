@@ -7,163 +7,163 @@ struct ButtonPanelView: View {
         TabView {
             VStack {
                 HStack {
-                    ButtonView("^2", type: .accent) { input.clear() }
-                    ButtonView("x^y", type: .accent) { input.push(Token(.open)) }
-                    ButtonView("sqrt", type: .accent) { input.push(Token(.close)) }
-                    ButtonView("pi", type: .accent) { input.delete() }
+                    ButtonTokenView(Token(.square), type: .accent, input: $input)
+                    ButtonTokenView(Token(.exp), type: .accent, input: $input)
+                    ButtonTokenView(Token(.sqrt), type: .accent, input: $input)
+                    ButtonTokenView(Token(.pi), type: .accent, input: $input)
                 }
                 
                 HStack {
-                    ButtonView("AC", type: .highlight) { input.clear() }
+                    ButtonView(Text("AC").fontWeight(.bold), type: .highlight) { input.clear() }
                     
-                    ButtonView("(") { input.push(Token(.open)) }
-                    ButtonView(")") { input.push(Token(.close)) }
+                    ButtonTokenView(Token(.open), input: $input)
+                    ButtonTokenView(Token(.close), input: $input)
                     
-                    ButtonView("<", type: .highlight) { input.delete() }
+                    ButtonView(Text(Image(systemName: "delete.backward.fill")), type: .highlight) { input.delete() }
                 }
                 
                 HStack {
-                    ButtonView("7") { input.push(Token(.seven)) }
-                    ButtonView("8") { input.push(Token(.eight)) }
-                    ButtonView("9") { input.push(Token(.nine)) }
+                    ButtonTokenView(Token(.seven), input: $input)
+                    ButtonTokenView(Token(.eight), input: $input)
+                    ButtonTokenView(Token(.nine), input: $input)
+                    ButtonTokenView(Token(.divide), type: .accent, input: $input)
+                }
+                
+                HStack {
+                    ButtonTokenView(Token(.four), input: $input)
+                    ButtonTokenView(Token(.five), input: $input)
+                    ButtonTokenView(Token(.six), input: $input)
+                    ButtonTokenView(Token(.times), type: .accent, input: $input)
+                }
+                
+                HStack {
+                    ButtonTokenView(Token(.one), input: $input)
+                    ButtonTokenView(Token(.two), input: $input)
+                    ButtonTokenView(Token(.three), input: $input)
+                    ButtonTokenView(Token(.minus), type: .accent, input: $input)
+                }
+                
+                HStack {
+                    ButtonTokenView(Token(.comma), input: $input)
+                    ButtonTokenView(Token(.zero), input: $input)
+                    ButtonTokenView(Token(.dot), input: $input)
+                    ButtonTokenView(Token(.plus), type: .accent, input: $input)
+                }
+                
+                HStack {
+                    ButtonTokenView(Token(.percent), type: .accent, input: $input)
                     
-                    ButtonView("/", type: .accent) { input.push(Token(.divide)) }
-                }
-                
-                HStack {
-                    ButtonView("4") { input.push(Token(.four)) }
-                    ButtonView("5") { input.push(Token(.five)) }
-                    ButtonView("6") { input.push(Token(.six)) }
-                    
-                    ButtonView("x", type: .accent) { input.push(Token(.times)) }
-                }
-                
-                HStack {
-                    ButtonView("1") { input.push(Token(.one)) }
-                    ButtonView("2") { input.push(Token(.two)) }
-                    ButtonView("3") { input.push(Token(.three)) }
-                    
-                    ButtonView("-", type: .accent) { input.push(Token(.minus)) }
-                }
-                
-                HStack {
-                    ButtonView(",") { input.push(Token(.comma)) }
-                    ButtonView("0") { input.push(Token(.zero)) }
-                    ButtonView(".") { input.push(Token(.dot)) }
-                    ButtonView("+", type: .accent) { input.push(Token(.plus)) }
-                }
-                
-                HStack {
-                    ButtonView("%", type: .accent) {}
                     ButtonView("HIST") {}
                     ButtonView("ANS", type: .accent) {}
-                    ButtonView("=", type: .highlight) { equals() }
+                    ButtonView(Text(Image(systemName: "equal")), type: .highlight) { equals() }
                 }
             }
             
             VStack {
                 HStack {
-                    ButtonView("AC", type: .highlight) { input.clear() }
+                    ButtonView(Text("AC").fontWeight(.bold), type: .highlight) { input.clear() }
                     
-                    ButtonView("(") { input.push(Token(.open)) }
-                    ButtonView(")") { input.push(Token(.close)) }
+                    ButtonTokenView(Token(.open), input: $input)
+                    ButtonTokenView(Token(.close), input: $input)
                     
-                    ButtonView("<", type: .highlight) { input.delete() }
+                    ButtonView(Text(Image(systemName: "delete.backward.fill")), type: .highlight) { input.delete() }
                 }
                 
                 HStack {
-                    ButtonView("x^2") { input.push(Token(.square)) }
-                    ButtonView("x^3") { input.push(Token(.cube)) }
-                    ButtonView("x^y") { input.push(Token(.exp)) }
-                    ButtonView("EE") { input.push(Token(.ee)) }
+                    ButtonTokenView(Token(.square), input: $input)
+                    ButtonTokenView(Token(.cube), input: $input)
+                    ButtonTokenView(Token(.exp), input: $input)
+                    ButtonTokenView(Token(.ee), input: $input)
                 }
                 
                 HStack {
-                    ButtonView("e^x") { input.push(Token(.antiln)) }
-                    ButtonView("10^x") { input.push(Token(.antilog)) }
-                    ButtonView("2^x") { input.push(Token(.antilog2)) }
-                    ButtonView("sqrt") { input.push(Token(.sqrt)) }
+                    ButtonTokenView(Token(.antiln), input: $input)
+                    ButtonTokenView(Token(.antilog), input: $input)
+                    ButtonTokenView(Token(.antilog2), input: $input)
+                    ButtonTokenView(Token(.sqrt), input: $input)
                 }
                 
                 HStack {
-                    ButtonView("cbrt") { input.push(Token(.cbrt)) }
-                    ButtonView("ln") { input.push(Token(.ln)) }
-                    ButtonView("log") { input.push(Token(.log)) }
-                    ButtonView("log2") { input.push(Token(.log2)) }
+                    ButtonTokenView(Token(.cbrt), input: $input)
+                    ButtonTokenView(Token(.ln), input: $input)
+                    ButtonTokenView(Token(.log), input: $input)
+                    ButtonTokenView(Token(.log2), input: $input)
                 }
                 
                 HStack {
-                    ButtonView("sin") { input.push(Token(.sin)) }
-                    ButtonView("cos") { input.push(Token(.cos)) }
-                    ButtonView("tan") { input.push(Token(.tan)) }
-                    ButtonView("pi") { input.push(Token(.pi)) }
+                    ButtonTokenView(Token(.sin), input: $input)
+                    ButtonTokenView(Token(.cos), input: $input)
+                    ButtonTokenView(Token(.tan), input: $input)
+                    ButtonTokenView(Token(.pi), input: $input)
                 }
                 
                 HStack {
-                    ButtonView("asin") { input.push(Token(.asin)) }
-                    ButtonView("acos") { input.push(Token(.acos)) }
-                    ButtonView("atan") { input.push(Token(.atan)) }
-                    ButtonView("e") { input.push(Token(.e)) }
+                    ButtonTokenView(Token(.asin), input: $input)
+                    ButtonTokenView(Token(.acos), input: $input)
+                    ButtonTokenView(Token(.atan), input: $input)
+                    ButtonTokenView(Token(.e), input: $input)
                 }
                 
                 HStack {
-                    ButtonView("CFG") {}
+                    ButtonTokenView(Token(.percent), type: .accent, input: $input)
+                    
                     ButtonView("HIST") {}
                     ButtonView("ANS", type: .accent) {}
-                    ButtonView("=", type: .highlight) { equals() }
+                    ButtonView(Text(Image(systemName: "equal")), type: .highlight) { equals() }
                 }
             }
             
             VStack {
                 HStack {
-                    ButtonView("AC", type: .highlight) { input.clear() }
+                    ButtonView(Text("AC").fontWeight(.bold), type: .highlight) { input.clear() }
                     
-                    ButtonView("(") { input.push(Token(.open)) }
-                    ButtonView(")") { input.push(Token(.close)) }
+                    ButtonTokenView(Token(.open), input: $input)
+                    ButtonTokenView(Token(.close), input: $input)
                     
-                    ButtonView("<", type: .highlight) { input.delete() }
+                    ButtonView(Text(Image(systemName: "delete.backward.fill")), type: .highlight) { input.delete() }
                 }
                 
                 HStack {
-                    ButtonView("1/x") { input.push(Token(.reciprocal)) }
-                    ButtonView("x!") { input.push(Token(.factorial)) }
-                    ButtonView("nthroot") { input.push(Token(.nthroot)) }
-                    ButtonView("logn") { input.push(Token(.logn)) }
+                    ButtonTokenView(Token(.reciprocal), input: $input)
+                    ButtonTokenView(Token(.factorial), input: $input)
+                    ButtonTokenView(Token(.nthroot), input: $input)
+                    ButtonTokenView(Token(.logn), input: $input)
                 }
                 
                 HStack {
-                    ButtonView("sinh") { input.push(Token(.sinh)) }
-                    ButtonView("cosh") { input.push(Token(.cosh)) }
-                    ButtonView("tanh") { input.push(Token(.tanh)) }
-                    ButtonView("phi") { input.push(Token(.open)) }
+                    ButtonTokenView(Token(.sinh), input: $input)
+                    ButtonTokenView(Token(.cosh), input: $input)
+                    ButtonTokenView(Token(.tanh), input: $input)
+                    ButtonTokenView(Token(.phi), input: $input)
                 }
                 
                 HStack {
-                    ButtonView("asinh") { input.push(Token(.asinh)) }
-                    ButtonView("acosh") { input.push(Token(.acosh)) }
-                    ButtonView("atanh") { input.push(Token(.atanh)) }
-                    ButtonView("rand") { input.push(Token(.rand)) }
+                    ButtonTokenView(Token(.asinh), input: $input)
+                    ButtonTokenView(Token(.acosh), input: $input)
+                    ButtonTokenView(Token(.atanh), input: $input)
+                    ButtonTokenView(Token(.rand), input: $input)
                 }
                 
                 HStack {
-                    ButtonView("sum") { input.push(Token(.sum)) }
-                    ButtonView("product") { input.push(Token(.product)) }
-                    ButtonView("min") { input.push(Token(.min)) }
-                    ButtonView("max") { input.push(Token(.max)) }
+                    ButtonTokenView(Token(.sum), input: $input)
+                    ButtonTokenView(Token(.product), input: $input)
+                    ButtonTokenView(Token(.min), input: $input)
+                    ButtonTokenView(Token(.max), input: $input)
                 }
                 
                 HStack {
-                    ButtonView("mean") { input.push(Token(.mean)) }
-                    ButtonView("median") { input.push(Token(.median)) }
-                    ButtonView("mode") { input.push(Token(.mode)) }
-                    ButtonView("stddev") { input.push(Token(.stddev)) }
+                    ButtonTokenView(Token(.mean), input: $input)
+                    ButtonTokenView(Token(.median), input: $input)
+                    ButtonTokenView(Token(.mode), input: $input)
+                    ButtonTokenView(Token(.stddev), input: $input)
                 }
                 
                 HStack {
-                    ButtonView("CFG") {}
+                    ButtonTokenView(Token(.percent), type: .accent, input: $input)
+                    
                     ButtonView("HIST") {}
                     ButtonView("ANS", type: .accent) {}
-                    ButtonView("=", type: .highlight) { equals() }
+                    ButtonView(Text(Image(systemName: "equal")), type: .highlight) { equals() }
                 }
             }
                 .padding([.top, .leading, .trailing])
@@ -173,7 +173,7 @@ struct ButtonPanelView: View {
     }
     
     func equals() {
-        guard let result: Double = evaluate(expr: input.string) else {
+        guard let result: Double = evaluate(expr: input.expr) else {
             return
         }
         
@@ -187,7 +187,7 @@ struct ButtonPanelView_Previews: PreviewProvider {
     
     static var previews: some View {
         VStack {
-            Text("input: " + input.string)
+            (Text("input: ") + input.display)
                 .frame(minHeight: 200)
             
             ButtonPanelView(input: $input)

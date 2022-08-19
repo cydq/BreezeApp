@@ -8,7 +8,7 @@ struct DisplayView: View {
             HStack {
                 Spacer()
                 
-                Text(input.string)
+                input.display
                     .font(.largeTitle)
                     .multilineTextAlignment(.trailing)
                     .foregroundColor(Settings.standard.theme.textPrimary)
@@ -20,7 +20,7 @@ struct DisplayView: View {
             HStack {
                 Spacer()
                 
-                Text(evaluateOr(expr: input.string))
+                Text(evaluateOr(expr: input.expr))
                     .font(.title)
                     .multilineTextAlignment(.trailing)
                     .foregroundColor(Settings.standard.theme.textHighlight)

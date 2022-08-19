@@ -1,8 +1,8 @@
 import SwiftUI
 
 enum Token {
-    // Literal
     case literal(String)
+    
     case symbol(SymbolToken)
     case prefix(PrefixToken)
     case infix(InfixToken)
@@ -50,6 +50,40 @@ enum Token {
             return token.expr
         }
     }
+    
+    var icon: Text {
+        switch self {
+        case let .literal(value):
+            return Text(value)
+        case let .symbol(token):
+            return token.icon
+        case let .prefix(token):
+            return token.icon
+        case let .infix(token):
+            return token.icon
+        case let .postfix(token):
+            return token.icon
+        case let .function(token):
+            return token.icon
+        }
+    }
+    
+    var display: Text {
+        switch self {
+        case let .literal(value):
+            return Text(value)
+        case let .symbol(token):
+            return token.display
+        case let .prefix(token):
+            return token.display
+        case let .infix(token):
+            return token.display
+        case let .postfix(token):
+            return token.display
+        case let .function(token):
+            return token.display
+        }
+    }
 }
 
 enum SymbolToken: String {
@@ -62,6 +96,25 @@ enum SymbolToken: String {
     case open = "(", close = ")"
     
     var expr: String { rawValue }
+    
+    var icon: Text {
+        self.display
+    }
+    
+    var display: Text {
+        switch self {
+        case .pi:
+            return Text("π")
+        case .phi:
+            return Text("φ")
+        case .tau:
+            return Text("τ")
+        case .comma:
+            return Text(", ")
+        default:
+            return Text(self.expr)
+        }
+    }
 }
 
 enum PrefixToken: String {
@@ -69,6 +122,30 @@ enum PrefixToken: String {
     case antiln = "->", antilog = "-->", antilog2 = "--->"
     
     var expr: String { rawValue }
+    
+    var icon: Text {
+        switch self {
+        case .sqrt:
+            return Text(Image(systemName: "x.squareroot"))
+        default:
+            return self.display
+        }
+    }
+    
+    var display: Text {
+        switch self {
+        case .sqrt:
+            return Text("√")
+        case .cbrt:
+            return Text("3√")
+        case .antiln:
+            return Text("e^")
+        case .antilog:
+            return Text("10^")
+        case .antilog2:
+            return Text("2^")
+        }
+    }
 }
 
 enum InfixToken: String {
@@ -76,6 +153,27 @@ enum InfixToken: String {
     case exp = "^", ee = "$ee$"
     
     var expr: String { rawValue }
+    
+    var icon: Text {
+        self.display
+    }
+    
+    var display: Text {
+        switch self {
+        case .plus:
+            return Text(Image(systemName: "plus"))
+        case .times:
+            return Text(Image(systemName: "multiply"))
+        case .minus:
+            return Text(Image(systemName: "minus"))
+        case .divide:
+            return Text(Image(systemName: "divide"))
+        case .ee:
+            return Text("EE")
+        default:
+            return Text(self.expr)
+        }
+    }
 }
 
 enum PostfixToken: String {
@@ -85,6 +183,25 @@ enum PostfixToken: String {
     case percent = "%"
     
     var expr: String { rawValue }
+    
+    var icon: Text {
+        self.display
+    }
+    
+    var display: Text {
+        switch self {
+        case .square:
+            return Text("x2")
+        case .cube:
+            return Text("x³")
+        case .reciprocal:
+            return Text("1/x")
+        case .percent:
+            return Text(Image(systemName: "percent"))
+        default:
+            return Text(self.expr)
+        }
+    }
 }
 
 enum FunctionToken: String {
@@ -99,4 +216,12 @@ enum FunctionToken: String {
     case mean, median, mode, stddev
     
     var expr: String { "\(rawValue)(" }
+    
+    var icon: Text {
+        self.display
+    }
+    
+    var display: Text {
+        Text(rawValue)
+    }
 }

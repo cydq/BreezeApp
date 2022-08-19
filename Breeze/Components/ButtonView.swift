@@ -18,18 +18,26 @@ extension ButtonType {
 }
 
 struct ButtonView: View {
-    let text: String
+    let text: Text
     let type: ButtonType
     let handle: () -> ()
     
-    init(_ text: String, type: ButtonType = .primary, onTap: @escaping () -> ()) {
+    init(_ text: Text, type: ButtonType = .primary, onTap: @escaping () -> ()) {
         self.text = text
         self.type = type
         self.handle = onTap
     }
     
+    init(_ text: String, type: ButtonType = .primary, onTap: @escaping () -> ()) {
+        self.text = Text(text)
+        self.type = type
+        self.handle = onTap
+    }
+    
     var body: some View {
-        Button(text, action: handle)
+        Button(action: handle) {
+            self.text
+        }
             .foregroundColor(type.color)
             .buttonStyle(MyButtonStyle())
     }
@@ -40,7 +48,7 @@ struct MyButtonStyle: ButtonStyle {
     configuration.label
       .padding()
       .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .background(configuration.isPressed ? Color.gray : Color.clear)
+      .background(configuration.isPressed ? Color(rgb: 0xCCCCCC) : Color.clear)
       .cornerRadius(8.0)
   }
 }
