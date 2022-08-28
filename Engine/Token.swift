@@ -177,8 +177,8 @@ enum InfixToken: String {
             return Text(Image(systemName: "divide"))
         case .ee:
             return Text("EE")
-        default:
-            return Text(self.expr)
+        case .exp:
+            return Text("xʸ")
         }
     }
 }

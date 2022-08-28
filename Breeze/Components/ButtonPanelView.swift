@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ButtonPanelView: View {
     @State private var isShowingAlert = false
+    @State private var isShowingSettings = false
     
     @Binding var input: Input
     
@@ -56,9 +57,29 @@ struct ButtonPanelView: View {
                     ButtonTokenView(Token(.percent), type: .accent, input: $input)
                     
                     ButtonView(Text(Image(systemName: "gearshape")), type: .accent) {
-                        isShowingAlert = true
-                    }.alert("History, mode, and more, coming in the next update!", isPresented: $isShowingAlert) {
-                        Button("OK", role: .cancel) { }
+                        isShowingSettings = true
+                    }.sheet(isPresented: $isShowingSettings) {
+                        NavigationView {
+                            VStack {
+                                Text("Thanks for downloading Breeze!")
+                                Text("Settings, history, and more coming soon!")
+                                
+                                Text("")
+                                Text("")
+                                
+                                Text("Feedback for improving this app is welcome.")
+                                
+                                Text("")
+                                Text("")
+                                Text("")
+                                Text("")
+                                
+                                Button("Done") {
+                                    isShowingSettings = false
+                                }
+                            }
+                                .navigationTitle("About")
+                        }
                     }
                     
                     ButtonTokenView(.answer, type: .accent, input: $input)
@@ -115,7 +136,8 @@ struct ButtonPanelView: View {
                 HStack {
                     ButtonTokenView(Token(.percent), type: .accent, input: $input)
                     
-                    ButtonView(Text(Image(systemName: "gearshape")), type: .accent) {}
+                    // ButtonView(Text(Image(systemName: "gearshape")), type: .accent) {}
+                    ButtonView(Text("")) {}
                     
                     ButtonTokenView(.answer, type: .accent, input: $input)
                     
@@ -171,7 +193,8 @@ struct ButtonPanelView: View {
                 HStack {
                     ButtonTokenView(Token(.percent), type: .accent, input: $input)
                     
-                    ButtonView(Text(Image(systemName: "gearshape")), type: .accent) {}
+//                    ButtonView(Text(Image(systemName: "gearshape")), type: .accent) {}
+                    ButtonView(Text("")) {}
                     
                     ButtonTokenView(.answer, type: .accent, input: $input)
                     
